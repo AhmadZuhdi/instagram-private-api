@@ -320,7 +320,7 @@ export class Media extends Resource {
     });
   }
 
-  static configureAlbum(session, medias, caption, disableComments) {
+  static configureAlbum(session, medias, caption, disableComments?) {
     const albumUploadId = new Date().getTime();
 
     caption = caption || '';
