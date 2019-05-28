@@ -7,7 +7,7 @@ import * as Bluebird from 'bluebird';
 const camelKeys = require('camelcase-keys');
 
 export class Upload extends Resource {
-  static async photo(session, streamOrPathOrBuffer, uploadId, name, isSidecar) {
+  static async photo(session, streamOrPathOrBuffer, uploadId?, name?, isSidecar?) {
     const data = Buffer.isBuffer(streamOrPathOrBuffer)
       ? streamOrPathOrBuffer
       : Helpers.pathToStream(streamOrPathOrBuffer);
@@ -53,7 +53,7 @@ export class Upload extends Resource {
       .then(json => new Upload(session, json));
   }
 
-  static video(session, videoBufferOrPath, photoStreamOrPath, isSidecar, fields?) {
+  static video(session, videoBufferOrPath, photoStreamOrPath?, isSidecar?, fields?) {
     //Probably not the best way to upload video, best to use stream not to store full video in memory, but it's the easiest
     const predictedUploadId = new Date().getTime();
     const request = new Request(session);
@@ -120,7 +120,7 @@ export class Upload extends Resource {
     });
   }
 
-  static album(session, medias, caption, disableComments): any {
+  static album(session, medias, caption?, disableComments?): any {
     const uploadPromises: any = [];
 
     if (medias.length < 2 || medias.length > 10) {

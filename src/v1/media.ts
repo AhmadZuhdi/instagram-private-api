@@ -91,7 +91,7 @@ export class Media extends Resource {
       });
   }
 
-  static configurePhoto(session: Session, uploadId, caption, width, height, userTags, location) {
+  static configurePhoto(session: Session, uploadId, caption?, width?, height?, userTags?, location?) {
     if (_.isEmpty(uploadId)) throw new Error('Upload argument must be upload valid upload id');
     if (!caption) caption = '';
     if (!width) width = 800;
@@ -190,7 +190,7 @@ export class Media extends Resource {
     uploadId,
     caption,
     durationms,
-    delay,
+    delay=6500,
     {
       audio_muted = false,
       trim_type = 0,
@@ -258,7 +258,7 @@ export class Media extends Resource {
       });
   }
 
-  static configurePhotoAlbum(session: Session, uploadId, caption, width, height, userTags) {
+  static configurePhotoAlbum(session: Session, uploadId, caption?, width?, height?, userTags?) {
     if (_.isEmpty(uploadId)) throw new Error('Upload argument must be upload valid upload id');
     if (!caption) caption = '';
     if (!width) width = 800;
